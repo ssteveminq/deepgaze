@@ -105,8 +105,12 @@ P3D_SUB_NOSE	examples/ex_dlib_pnp_head_pose_estimation_video.py	/^P3D_SUB_NOSE =
 P3D_SUB_NOSE	examples/ex_pnp_head_pose_estimation_video.py	/^P3D_SUB_NOSE = numpy.float32([5.0, 0.0, -52.0]) #33$/;"	v
 P3D_SUB_NOSE	examples/ex_pnp_head_pose_estimation_webcam.py	/^P3D_SUB_NOSE = numpy.float32([5.0, 0.0, -52.0]) #33$/;"	v
 PRINT_TIME	examples/ex_fasa_saliency_map/ex_fasa_saliency_map_webcam.py	/^PRINT_TIME = False$/;"	v
+ParticleFilter	build/lib.linux-x86_64-2.7/deepgaze/3d_object_tracking.py	/^class ParticleFilter:$/;"	c
+ParticleFilter	build/lib.linux-x86_64-2.7/deepgaze/3dobject_tracking.py	/^class ParticleFilter:$/;"	c
 ParticleFilter	build/lib.linux-x86_64-2.7/deepgaze/motion_tracking.py	/^class ParticleFilter:$/;"	c
+ParticleFilter	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^class ParticleFilter:$/;"	c
 ParticleFilter	deepgaze/motion_tracking.py	/^class ParticleFilter:$/;"	c
+ParticleFilter	deepgaze/object3d_tracking.py	/^class ParticleFilter:$/;"	c
 PnpHeadPoseEstimator	build/lib.linux-x86_64-2.7/deepgaze/head_pose_estimation.py	/^class PnpHeadPoseEstimator:$/;"	c
 PnpHeadPoseEstimator	deepgaze/head_pose_estimation.py	/^class PnpHeadPoseEstimator:$/;"	c
 RESOLUTION_HEIGHT	examples/ex_fasa_saliency_map/ex_fasa_saliency_map_webcam.py	/^RESOLUTION_HEIGHT = 180$/;"	v
@@ -129,6 +133,8 @@ TRACKED_POINTS	examples/ex_dlib_pnp_head_pose_estimation_video.py	/^TRACKED_POIN
 TRACKED_POINTS	examples/ex_pnp_head_pose_estimation_video.py	/^TRACKED_POINTS = (0, 4, 8, 12, 16, 17, 26, 27, 30, 33, 36, 39, 42, 45, 62)$/;"	v
 TRACKED_POINTS	examples/ex_pnp_head_pose_estimation_webcam.py	/^TRACKED_POINTS = (0, 4, 8, 12, 16, 17, 26, 27, 30, 33, 36, 39, 42, 45, 62)$/;"	v
 USE_WEBCAM	examples/ex_particle_filter_object_tracking_video/ex_particle_filter_object_tracking_video.py	/^USE_WEBCAM = False$/;"	v
+__init__	build/lib.linux-x86_64-2.7/deepgaze/3d_object_tracking.py	/^    def __init__(self, width, height, N):$/;"	m	class:ParticleFilter
+__init__	build/lib.linux-x86_64-2.7/deepgaze/3dobject_tracking.py	/^    def __init__(self, width, height, N):$/;"	m	class:ParticleFilter
 __init__	build/lib.linux-x86_64-2.7/deepgaze/bayes_filter.py	/^    def __init__(self, states_number):$/;"	m	class:DiscreteBayesFilter
 __init__	build/lib.linux-x86_64-2.7/deepgaze/cnn_head_pose_estimator.py	/^    def __init__(self, YawFilePath, PitchFilePath):$/;"	m	class:CnnHeadPoseEstimator
 __init__	build/lib.linux-x86_64-2.7/deepgaze/color_classification.py	/^    def __init__(self, channels=[0, 1, 2], hist_size=[10, 10, 10], hist_range=[0, 256, 0, 256, 0, 256], hist_type='BGR'):$/;"	m	class:HistogramColorClassifier
@@ -144,6 +150,7 @@ __init__	build/lib.linux-x86_64-2.7/deepgaze/motion_detection.py	/^    def __ini
 __init__	build/lib.linux-x86_64-2.7/deepgaze/motion_detection.py	/^    def __init__(self):$/;"	m	class:Mog2MotionDetector
 __init__	build/lib.linux-x86_64-2.7/deepgaze/motion_detection.py	/^    def __init__(self, history=10, numberMixtures=3, backgroundRatio=0.6, noise=20):$/;"	m	class:MogMotionDetector
 __init__	build/lib.linux-x86_64-2.7/deepgaze/motion_tracking.py	/^    def __init__(self, width, height, N):$/;"	m	class:ParticleFilter
+__init__	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def __init__(self, width, height, N):$/;"	m	class:ParticleFilter
 __init__	build/lib.linux-x86_64-2.7/deepgaze/saliency_map.py	/^    def __init__(self, image_h, image_w):$/;"	m	class:FasaSaliencyMapping
 __init__	deepgaze/bayes_filter.py	/^    def __init__(self, states_number):$/;"	m	class:DiscreteBayesFilter
 __init__	deepgaze/cnn_head_pose_estimator.py	/^    def __init__(self, YawFilePath, PitchFilePath):$/;"	m	class:CnnHeadPoseEstimator
@@ -160,6 +167,7 @@ __init__	deepgaze/motion_detection.py	/^    def __init__(self):$/;"	m	class:Diff
 __init__	deepgaze/motion_detection.py	/^    def __init__(self):$/;"	m	class:Mog2MotionDetector
 __init__	deepgaze/motion_detection.py	/^    def __init__(self, history=10, numberMixtures=3, backgroundRatio=0.6, noise=20):$/;"	m	class:MogMotionDetector
 __init__	deepgaze/motion_tracking.py	/^    def __init__(self, width, height, N):$/;"	m	class:ParticleFilter
+__init__	deepgaze/object3d_tracking.py	/^    def __init__(self, width, height, N):$/;"	m	class:ParticleFilter
 __init__	deepgaze/saliency_map.py	/^    def __init__(self, image_h, image_w):$/;"	m	class:FasaSaliencyMapping
 _allocate_pitch_variables	build/lib.linux-x86_64-2.7/deepgaze/head_pose_estimation.py	/^    def _allocate_pitch_variables(self):$/;"	m	class:CnnHeadPoseEstimator
 _allocate_pitch_variables	deepgaze/head_pose_estimation.py	/^    def _allocate_pitch_variables(self):$/;"	m	class:CnnHeadPoseEstimator
@@ -269,11 +277,19 @@ drawMaxAreaConvexHull	build/lib.linux-x86_64-2.7/deepgaze/mask_analysis.py	/^   
 drawMaxAreaConvexHull	deepgaze/mask_analysis.py	/^    def drawMaxAreaConvexHull(self, frame, mask, color=[0,255,0], thickness=3):$/;"	m	class:BinaryMaskAnalyser
 drawMaxAreaRectangle	build/lib.linux-x86_64-2.7/deepgaze/mask_analysis.py	/^    def drawMaxAreaRectangle(self, frame, mask, color=[0,255,0], thickness=3):$/;"	m	class:BinaryMaskAnalyser
 drawMaxAreaRectangle	deepgaze/mask_analysis.py	/^    def drawMaxAreaRectangle(self, frame, mask, color=[0,255,0], thickness=3):$/;"	m	class:BinaryMaskAnalyser
+drawParticles	build/lib.linux-x86_64-2.7/deepgaze/3d_object_tracking.py	/^    def drawParticles(self, frame, color=[0,0,255], radius=2):$/;"	m	class:ParticleFilter
+drawParticles	build/lib.linux-x86_64-2.7/deepgaze/3dobject_tracking.py	/^    def drawParticles(self, frame, color=[0,0,255], radius=2):$/;"	m	class:ParticleFilter
 drawParticles	build/lib.linux-x86_64-2.7/deepgaze/motion_tracking.py	/^    def drawParticles(self, frame, color=[0,0,255], radius=2):$/;"	m	class:ParticleFilter
+drawParticles	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def drawParticles(self, frame, color=[0,0,255], radius=2):$/;"	m	class:ParticleFilter
 drawParticles	deepgaze/motion_tracking.py	/^    def drawParticles(self, frame, color=[0,0,255], radius=2):$/;"	m	class:ParticleFilter
+drawParticles	deepgaze/object3d_tracking.py	/^    def drawParticles(self, frame, color=[0,0,255], radius=2):$/;"	m	class:ParticleFilter
 draw_circle	examples/ex_particle_filter_mouse_tracking/ex_particle_filter_mouse_tracking.py	/^def draw_circle(event,x,y,flags,param):$/;"	f
+estimate	build/lib.linux-x86_64-2.7/deepgaze/3d_object_tracking.py	/^    def estimate(self):$/;"	m	class:ParticleFilter
+estimate	build/lib.linux-x86_64-2.7/deepgaze/3dobject_tracking.py	/^    def estimate(self):$/;"	m	class:ParticleFilter
 estimate	build/lib.linux-x86_64-2.7/deepgaze/motion_tracking.py	/^    def estimate(self):$/;"	m	class:ParticleFilter
+estimate	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def estimate(self):$/;"	m	class:ParticleFilter
 estimate	deepgaze/motion_tracking.py	/^    def estimate(self):$/;"	m	class:ParticleFilter
+estimate	deepgaze/object3d_tracking.py	/^    def estimate(self):$/;"	m	class:ParticleFilter
 extractFaces	examples/ex_cnn_cascade_training_face_detection/extract_faces.py	/^def extractFaces(in_dir, out_dir, bb_file, patterns=False):$/;"	f
 f	examples/ex_dnn_head_pose_estimation_training/ex_aflw_parser.py	/^  f = open(pickle_file, 'wb')$/;"	v
 f_x	examples/ex_cnn_head_pose_axes/ex_cnn_head_pose_estimation_axes.py	/^    f_x = c_x \/ np.tan(60\/2 * np.pi \/ 180)$/;"	v
@@ -496,10 +512,14 @@ pitch	examples/ex_cnn_head_pose_estimation_images/ex_cnn_head_pose_estimation_im
 pitch	examples/ex_cnn_head_pose_estimation_images/ex_cnn_head_pose_estimation_images_pitch.py	/^    pitch = my_head_pose_estimator.return_pitch(image) #Evaluate the pitch angle using a CNN$/;"	v
 pitch	examples/ex_cnn_head_pose_estimation_images/ex_cnn_head_pose_estimation_images_pitch_yaw.py	/^pitch = my_head_pose_estimator.return_pitch(image) #Evaluate the pitch angle using a CNN$/;"	v
 pitch_degree	examples/ex_cnn_head_pose_axes/ex_cnn_head_pose_estimation_axes.py	/^    pitch_degree = my_head_pose_estimator.return_pitch(image, radians=False)  # Evaluate the pitch angle using a CNN$/;"	v
+predict	build/lib.linux-x86_64-2.7/deepgaze/3d_object_tracking.py	/^    def predict(self, x_velocity, y_velocity, std ):$/;"	m	class:ParticleFilter
+predict	build/lib.linux-x86_64-2.7/deepgaze/3dobject_tracking.py	/^    def predict(self, x_velocity, y_velocity, std ):$/;"	m	class:ParticleFilter
 predict	build/lib.linux-x86_64-2.7/deepgaze/bayes_filter.py	/^    def predict(self, belief, cpt_motion_model):$/;"	m	class:DiscreteBayesFilter
 predict	build/lib.linux-x86_64-2.7/deepgaze/motion_tracking.py	/^    def predict(self, x_velocity, y_velocity, std ):$/;"	m	class:ParticleFilter
+predict	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def predict(self, x_velocity, y_velocity, std ):$/;"	m	class:ParticleFilter
 predict	deepgaze/bayes_filter.py	/^    def predict(self, belief, cpt_motion_model):$/;"	m	class:DiscreteBayesFilter
 predict	deepgaze/motion_tracking.py	/^    def predict(self, x_velocity, y_velocity, std ):$/;"	m	class:ParticleFilter
+predict	deepgaze/object3d_tracking.py	/^    def predict(self, x_velocity, y_velocity, std ):$/;"	m	class:ParticleFilter
 prediction	examples/ex_dnn_head_pose_estimation_training/ex_dnn_head_pose_estimation_testing.py	/^    prediction = multilayer_model(tf_train_dataset, $/;"	v
 predictions	examples/ex_dnn_head_pose_estimation_training/ex_dnn_head_pose_estimation_testing.py	/^    predictions = _sess.run([prediction], feed_dict=feed_dict)$/;"	v
 print_allocated_variables	build/lib.linux-x86_64-2.7/deepgaze/head_pose_estimation.py	/^    def print_allocated_variables(self):$/;"	m	class:CnnHeadPoseEstimator
@@ -508,8 +528,12 @@ reader	examples/ex_dnn_head_pose_estimation_training/ex_aflw_parser.py	/^       
 removeModelHistogramByName	build/lib.linux-x86_64-2.7/deepgaze/color_classification.py	/^    def removeModelHistogramByName(self, name):$/;"	m	class:HistogramColorClassifier
 removeModelHistogramByName	deepgaze/color_classification.py	/^    def removeModelHistogramByName(self, name):$/;"	m	class:HistogramColorClassifier
 requires	setup.py	/^  requires = ['numpy', 'cv', 'cv2', 'tensorflow']$/;"	v
+resample	build/lib.linux-x86_64-2.7/deepgaze/3d_object_tracking.py	/^    def resample(self, method='residual'):$/;"	m	class:ParticleFilter
+resample	build/lib.linux-x86_64-2.7/deepgaze/3dobject_tracking.py	/^    def resample(self, method='residual'):$/;"	m	class:ParticleFilter
 resample	build/lib.linux-x86_64-2.7/deepgaze/motion_tracking.py	/^    def resample(self, method='residual'):$/;"	m	class:ParticleFilter
+resample	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def resample(self, method='residual'):$/;"	m	class:ParticleFilter
 resample	deepgaze/motion_tracking.py	/^    def resample(self, method='residual'):$/;"	m	class:ParticleFilter
+resample	deepgaze/object3d_tracking.py	/^    def resample(self, method='residual'):$/;"	m	class:ParticleFilter
 returnBestMatchIndex	build/lib.linux-x86_64-2.7/deepgaze/color_classification.py	/^    def returnBestMatchIndex(self, image, method='intersection'):$/;"	m	class:HistogramColorClassifier
 returnBestMatchIndex	deepgaze/color_classification.py	/^    def returnBestMatchIndex(self, image, method='intersection'):$/;"	m	class:HistogramColorClassifier
 returnBestMatchName	build/lib.linux-x86_64-2.7/deepgaze/color_classification.py	/^    def returnBestMatchName(self, image, method='intersection'):$/;"	m	class:HistogramColorClassifier
@@ -562,10 +586,18 @@ returnNameList	build/lib.linux-x86_64-2.7/deepgaze/color_classification.py	/^   
 returnNameList	deepgaze/color_classification.py	/^    def returnNameList(self):$/;"	m	class:HistogramColorClassifier
 returnNumberOfContours	build/lib.linux-x86_64-2.7/deepgaze/mask_analysis.py	/^    def returnNumberOfContours(self, mask):$/;"	m	class:BinaryMaskAnalyser
 returnNumberOfContours	deepgaze/mask_analysis.py	/^    def returnNumberOfContours(self, mask):$/;"	m	class:BinaryMaskAnalyser
+returnParticlesContribution	build/lib.linux-x86_64-2.7/deepgaze/3d_object_tracking.py	/^    def returnParticlesContribution(self):$/;"	m	class:ParticleFilter
+returnParticlesContribution	build/lib.linux-x86_64-2.7/deepgaze/3dobject_tracking.py	/^    def returnParticlesContribution(self):$/;"	m	class:ParticleFilter
 returnParticlesContribution	build/lib.linux-x86_64-2.7/deepgaze/motion_tracking.py	/^    def returnParticlesContribution(self):$/;"	m	class:ParticleFilter
+returnParticlesContribution	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def returnParticlesContribution(self):$/;"	m	class:ParticleFilter
 returnParticlesContribution	deepgaze/motion_tracking.py	/^    def returnParticlesContribution(self):$/;"	m	class:ParticleFilter
+returnParticlesContribution	deepgaze/object3d_tracking.py	/^    def returnParticlesContribution(self):$/;"	m	class:ParticleFilter
+returnParticlesCoordinates	build/lib.linux-x86_64-2.7/deepgaze/3d_object_tracking.py	/^    def returnParticlesCoordinates(self, index=-1):$/;"	m	class:ParticleFilter
+returnParticlesCoordinates	build/lib.linux-x86_64-2.7/deepgaze/3dobject_tracking.py	/^    def returnParticlesCoordinates(self, index=-1):$/;"	m	class:ParticleFilter
 returnParticlesCoordinates	build/lib.linux-x86_64-2.7/deepgaze/motion_tracking.py	/^    def returnParticlesCoordinates(self, index=-1):$/;"	m	class:ParticleFilter
+returnParticlesCoordinates	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def returnParticlesCoordinates(self, index=-1):$/;"	m	class:ParticleFilter
 returnParticlesCoordinates	deepgaze/motion_tracking.py	/^    def returnParticlesCoordinates(self, index=-1):$/;"	m	class:ParticleFilter
+returnParticlesCoordinates	deepgaze/object3d_tracking.py	/^    def returnParticlesCoordinates(self, index=-1):$/;"	m	class:ParticleFilter
 returnSize	build/lib.linux-x86_64-2.7/deepgaze/color_classification.py	/^    def returnSize(self):$/;"	m	class:HistogramColorClassifier
 returnSize	deepgaze/color_classification.py	/^    def returnSize(self):$/;"	m	class:HistogramColorClassifier
 return_pitch	build/lib.linux-x86_64-2.7/deepgaze/head_pose_estimation.py	/^    def return_pitch(self, image, radians=False):$/;"	m	class:CnnHeadPoseEstimator
@@ -634,10 +666,14 @@ training_label	examples/ex_dnn_head_pose_estimation_training/ex_aflw_parser.py	/
 training_label	examples/ex_dnn_head_pose_estimation_training/ex_dnn_head_pose_estimation_training.py	/^  training_label = save['training_label']$/;"	v
 tvec	examples/ex_cnn_head_pose_axes/ex_cnn_head_pose_estimation_axes.py	/^    tvec = np.array([0.0, 0.0, 1.0], np.float) # translation vector$/;"	v
 ui	examples/ex_multi_backprojection_hand_tracking_gaming/ex_multi_backprojection_hand_tracking_gaming.py	/^ui = UInput()$/;"	v
+update	build/lib.linux-x86_64-2.7/deepgaze/3d_object_tracking.py	/^    def update(self, x, y):$/;"	m	class:ParticleFilter
+update	build/lib.linux-x86_64-2.7/deepgaze/3dobject_tracking.py	/^    def update(self, x, y):$/;"	m	class:ParticleFilter
 update	build/lib.linux-x86_64-2.7/deepgaze/bayes_filter.py	/^    def update(self, belief_predicted, measure, cpt_measure_accuracy):$/;"	m	class:DiscreteBayesFilter
 update	build/lib.linux-x86_64-2.7/deepgaze/motion_tracking.py	/^    def update(self, x, y):$/;"	m	class:ParticleFilter
+update	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def update(self, x, y):$/;"	m	class:ParticleFilter
 update	deepgaze/bayes_filter.py	/^    def update(self, belief_predicted, measure, cpt_measure_accuracy):$/;"	m	class:DiscreteBayesFilter
 update	deepgaze/motion_tracking.py	/^    def update(self, x, y):$/;"	m	class:ParticleFilter
+update	deepgaze/object3d_tracking.py	/^    def update(self, x, y):$/;"	m	class:ParticleFilter
 url	setup.py	/^  url='https:\/\/github.com\/mpatacchiola\/deepgaze',$/;"	v
 valid_prediction	examples/ex_dnn_head_pose_estimation_training/ex_dnn_head_pose_estimation_training.py	/^    valid_prediction = multilayer_model(tf_valid_dataset, $/;"	v
 validation_dataset	examples/ex_dnn_head_pose_estimation_training/ex_aflw_parser.py	/^validation_dataset = numpy.copy(dataset[cut_80:cut_80+cut_10,:])$/;"	v

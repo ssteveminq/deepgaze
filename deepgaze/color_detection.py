@@ -125,6 +125,7 @@ class MultiBackProjectionColorDetector:
         is internally stored as an HSV image.
         @param frame the template to use in the algorithm
         """ 
+
         for frame in frame_list:    
             self.template_hsv_list.append(cv2.cvtColor(frame, cv2.COLOR_BGR2HSV))
 
