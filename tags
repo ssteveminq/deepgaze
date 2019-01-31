@@ -326,6 +326,7 @@ getTemplate	build/lib.linux-x86_64-2.7/deepgaze/color_detection.py	/^    def get
 getTemplate	deepgaze/color_detection.py	/^    def getTemplate(self):$/;"	m	class:BackProjectionColorDetector
 getTemplateList	build/lib.linux-x86_64-2.7/deepgaze/color_detection.py	/^    def getTemplateList(self):$/;"	m	class:MultiBackProjectionColorDetector
 getTemplateList	deepgaze/color_detection.py	/^    def getTemplateList(self):$/;"	m	class:MultiBackProjectionColorDetector
+get_entropy	deepgaze/object3d_tracking.py	/^    def get_entropy(self):$/;"	m	class:ParticleFilter
 global_step	examples/ex_dnn_head_pose_estimation_training/ex_dnn_head_pose_estimation_training.py	/^    global_step = tf.Variable(0)  # count the number of steps taken.$/;"	v
 graph	examples/ex_dnn_head_pose_estimation_training/ex_dnn_head_pose_estimation_testing.py	/^graph = tf.Graph()$/;"	v
 graph	examples/ex_dnn_head_pose_estimation_training/ex_dnn_head_pose_estimation_training.py	/^graph = tf.Graph()$/;"	v
@@ -533,7 +534,7 @@ resample	build/lib.linux-x86_64-2.7/deepgaze/3dobject_tracking.py	/^    def resa
 resample	build/lib.linux-x86_64-2.7/deepgaze/motion_tracking.py	/^    def resample(self, method='residual'):$/;"	m	class:ParticleFilter
 resample	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def resample(self, method='residual'):$/;"	m	class:ParticleFilter
 resample	deepgaze/motion_tracking.py	/^    def resample(self, method='residual'):$/;"	m	class:ParticleFilter
-resample	deepgaze/object3d_tracking.py	/^    def resample(self, method='residual'):$/;"	m	class:ParticleFilter
+resample	deepgaze/object3d_tracking.py	/^    def resample(self, method='multinomal'):$/;"	m	class:ParticleFilter
 returnBestMatchIndex	build/lib.linux-x86_64-2.7/deepgaze/color_classification.py	/^    def returnBestMatchIndex(self, image, method='intersection'):$/;"	m	class:HistogramColorClassifier
 returnBestMatchIndex	deepgaze/color_classification.py	/^    def returnBestMatchIndex(self, image, method='intersection'):$/;"	m	class:HistogramColorClassifier
 returnBestMatchName	build/lib.linux-x86_64-2.7/deepgaze/color_classification.py	/^    def returnBestMatchName(self, image, method='intersection'):$/;"	m	class:HistogramColorClassifier

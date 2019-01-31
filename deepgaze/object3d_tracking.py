@@ -12,6 +12,7 @@
 #Thank to rlabbe and his fantastic repository for Bayesian Filter:
 #https://github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python
 
+import math
 import numpy as np
 from numpy.random import uniform
 import cv2
@@ -101,6 +102,8 @@ class ParticleFilter:
         #Renormalize by dividing all the weights by the sum of all the weights.
         self.weights += 1.e-300 #avoid zeros
         self.weights /= sum(self.weights) #normalize
+        # print "----------predit-----------" 
+        # print  self.weights
 
     def estimate(self):
         """Estimate the position of the point given the particle weights.
@@ -110,8 +113,8 @@ class ParticleFilter:
         """
         #Using the weighted average of the particles
         #gives an estimation of the position of the point
-        x_mean = np.average(self.particles[:, 0], weights=self.weights, axis=0).astype(int)
-        y_mean = np.average(self.particles[:, 1], weights=self.weights, axis=0).astype(int)
+        x_mean = np.average(self.particles[:, 0], weights=self.weights, axis=0).astype(float)
+        y_mean = np.average(self.particles[:, 1], weights=self.weights, axis=0).astype(float)
         # z_mean = np.average(self.particles[:, 2], weights=self.weights, axis=0).astype(int)
 
         #mean = np.average(self.particles[:, 0:3], weights=self.weights, axis=0)
@@ -125,7 +128,8 @@ class ParticleFilter:
         # return x_mean, y_mean,z_mean, 0, 0, 0
         return x_mean, y_mean, 0, 0
 
-    def resample(self, method='residual'):
+    # def resample(self, method='residual'):
+    def resample(self, method='multinomal'):
         """Resample the particle based on their weights.
  
         The resempling (or importance sampling) draws with replacement N
@@ -212,7 +216,17 @@ class ParticleFilter:
         self.particles[:] = self.particles[indices] #resample according to indices
         self.weights[:] = self.weights[indices]
         #Normalize the new set of particles
+        # print "----------resample-----------" 
+        # print self.weights
         self.weights /= np.sum(self.weights)        
+        # print'weight size',len(self.weights)
+    def get_entropy(self):
+        self.entropy=0
+        for each in self.weights:
+            self.entropy=self.entropy-each*np.log2(each);
+        # self.entropy =-np.sum(self.weights*math.log(self.weights))
+        return self.entropy
+
 
     def returnParticlesContribution(self):
         """This function gives an estimation of the number of particles which are
