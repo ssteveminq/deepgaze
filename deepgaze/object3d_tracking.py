@@ -47,6 +47,8 @@ class ParticleFilter:
         #self.weights = np.empty((N, 1))
         self.weights = np.array([1.0/N]*N)
         #self.weights.fill(1.0/N) #normalised values
+        self.context_x=-3
+        self.context_y=-3
 
     # def predict(self, x_velocity, y_velocity, z_velocity, std ):
     def predict(self, x_velocity, y_velocity, std ):
@@ -63,9 +65,24 @@ class ParticleFilter:
         """
         #To predict the position of the point at the next step we take the
         #previous position and we add the estimated speed and Gaussian noise
-        self.particles[:, 0] += x_velocity + (np.random.randn(len(self.particles)) * std) #predict the X coord
-        self.particles[:, 1] += y_velocity + (np.random.randn(len(self.particles)) * std) #predict the Y coord
+        self.particles[:, 0] += uniform(-1.0,1.0)*x_velocity + (np.random.randn(len(self.particles)) * std) #predict the X coord
+        self.particles[:, 1] += uniform(-1.0,1.0)*y_velocity + (np.random.randn(len(self.particles)) * std) #predict the Y coord
         # self.particles[:, 2] += z_velocity + (np.random.randn(len(self.particles)) * std) #predict the Y coord
+    def predict_context(self,context_category,std ):
+        """Predict the position of the point in the next frame from context information.
+        Move the particles based on how the real system is predicted to behave.
+        """
+        # print context_category
+        if context_category==1:
+            self.particles[:, 0] = self.context_x + (np.random.randn(len(self.particles)) * std) #predict the X coord
+            self.particles[:, 1] = self.context_y + (np.random.randn(len(self.particles)) * std) #predict the Y coord
+        else:
+            self.particles[:, 0] = -self.context_x + (np.random.randn(len(self.particles)) * std) #predict the X coord
+            self.particles[:, 1] = -self.context_y + (np.random.randn(len(self.particles)) * std) #predict the Y coord
+            
+        # print "predict context"
+        # self.particles[:, 2] += z_velocity + (np.random.randn(len(self.particles)) * std) #predict the Y coord
+
 
     # def update(self, x, y,z):
     def update(self, x, y):
@@ -128,8 +145,8 @@ class ParticleFilter:
         # return x_mean, y_mean,z_mean, 0, 0, 0
         return x_mean, y_mean, 0, 0
 
-    # def resample(self, method='residual'):
-    def resample(self, method='multinomal'):
+    # def resample(self, method='multinomal'):
+    def resample(self, method='residual'):
         """Resample the particle based on their weights.
  
         The resempling (or importance sampling) draws with replacement N
@@ -250,9 +267,9 @@ class ParticleFilter:
         @return a single coordinate (x,y) or the entire array
         """
         if(index<0):
-            return self.particles.astype(int)
+            return self.particles.astype(float)
         else:
-            return self.particles[index,:].astype(int)
+            return self.particles[index,:].astype(float)
 
     def drawParticles(self, frame, color=[0,0,255], radius=2):
         """Draw the particles on a frame and return it.
