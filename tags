@@ -522,6 +522,7 @@ predict	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def predi
 predict	deepgaze/bayes_filter.py	/^    def predict(self, belief, cpt_motion_model):$/;"	m	class:DiscreteBayesFilter
 predict	deepgaze/motion_tracking.py	/^    def predict(self, x_velocity, y_velocity, std ):$/;"	m	class:ParticleFilter
 predict	deepgaze/object3d_tracking.py	/^    def predict(self, x_velocity, y_velocity, std ):$/;"	m	class:ParticleFilter
+predict_context	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def predict_context(self,context_category,std ):$/;"	m	class:ParticleFilter
 predict_context	deepgaze/object3d_tracking.py	/^    def predict_context(self,context_category,std ):$/;"	m	class:ParticleFilter
 prediction	examples/ex_dnn_head_pose_estimation_training/ex_dnn_head_pose_estimation_testing.py	/^    prediction = multilayer_model(tf_train_dataset, $/;"	v
 predictions	examples/ex_dnn_head_pose_estimation_training/ex_dnn_head_pose_estimation_testing.py	/^    predictions = _sess.run([prediction], feed_dict=feed_dict)$/;"	v

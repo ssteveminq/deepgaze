@@ -35,11 +35,12 @@ class ParticleFilter:
         @param deptht the depth of the bounding box
         @param N the number of particles
         """
-        if(N <= 0 or N>width*height): 
+        # if(N <= 0 or N>width*height): 
+        if(N <= 0):
             raise ValueError('[DEEPGAZE] motion_tracking.py: the ParticleFilter class does not accept a value of N which is <= 0 or >(widht*height)')
         self.particles = np.empty((N, 2))
         self.particles[:, 0] = uniform(-0.5*width, 0.5*width, size=N) #init the X coord
-        self.particles[:, 1] = uniform(0.5*height, 0.5*height, size=N) #init the Y coord
+        self.particles[:, 1] = uniform(-0.5*height, 0.5*height, size=N) #init the Y coord
         # self.particles[:, 2] = uniform(-0.5*depth, 0.5*depth, size=N) #init the Y coord
         #Init the weiths vector as a uniform distribution
         #at the begining each particle has the same probability
