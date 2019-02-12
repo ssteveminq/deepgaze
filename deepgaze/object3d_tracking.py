@@ -49,7 +49,7 @@ class ParticleFilter:
         self.weights = np.array([1.0/N]*N)
         #self.weights.fill(1.0/N) #normalised values
         self.context_x=-3
-        self.context_y=-3
+        self.context_y=0
 
     # def predict(self, x_velocity, y_velocity, z_velocity, std ):
     def predict(self, x_velocity, y_velocity, std ):
@@ -122,6 +122,49 @@ class ParticleFilter:
         self.weights /= sum(self.weights) #normalize
         # print "----------predit-----------" 
         # print  self.weights
+        entropy = self.get_entropy()
+        return entropy
+
+    def get_entropy_sample(self, x, y):
+        """Update the weights associated which each particle based on the (x,y,z) coords measured.
+        Particles that closely match the measurements give an higher contribution.
+ 
+        The position of the point at the next time step is predicted using the 
+        estimated speed along X and Y axis and adding Gaussian noise sampled 
+        from a distribution with MEAN=0.0 and STD=std. It is a linear model.
+        @param x the position of the point in the X axis
+        @param y the position of the point in the Y axis
+        @param 
+        """
+        #Generating a temporary array for the input position
+        # position = np.empty((len(self.particles), 3))
+        position = np.empty((len(self.particles), 2))
+        position[:, 0].fill(x)
+        position[:, 1].fill(y)
+        # position[:, 2].fill(z)
+        #1- We can take the difference between each particle new
+        #position and the measurement. In this case is the Euclidean Distance.
+        distance = np.linalg.norm(self.particles - position, axis=1)
+        #2- Particles which are closer to the real position have smaller
+        #Euclidean Distance, here we subtract the maximum distance in order
+        #to get the opposite (particles close to the real position have
+        #an higher wieght)
+        max_distance = np.amax(distance)
+        distance = np.add(-distance, max_distance)
+        #3-Particles that best predict the measurement 
+        #end up with the highest weight.
+        sampledweights.fill(1.0) #reset the weight array
+        sampledweights*= distance
+        #4- after the multiplication the sum of the weights won't be 1. 
+        #Renormalize by dividing all the weights by the sum of all the weights.
+        sampledweights += 1.e-300 #avoid zeros
+        sampledweights /= sum(sampledweights) #normalize
+        # print "----------predit-----------" 
+        # print  self.weights
+        sample_entropy =-np.sum(sampledweights*np.log2(sampledweights))
+        return sample_entropy
+
+
 
     def estimate(self):
         """Estimate the position of the point given the particle weights.
@@ -240,10 +283,12 @@ class ParticleFilter:
         # print'weight size',len(self.weights)
     def get_entropy(self):
         self.entropy=0
-        for each in self.weights:
-            self.entropy=self.entropy-each*np.log2(each);
+        # for each in self.weights:
+            # self.entropy=self.entropy-each*np.log2(each);
         # self.entropy =-np.sum(self.weights*math.log(self.weights))
+        self.entropy =-np.sum(self.weights*np.log2(self.weights))
         return self.entropy
+
 
 
     def returnParticlesContribution(self):
