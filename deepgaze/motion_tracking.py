@@ -44,6 +44,7 @@ class ParticleFilter:
         #self.weights = np.empty((N, 1))
         self.weights = np.array([1.0/N]*N)
         #self.weights.fill(1.0/N) #normalised values
+        self.std_=10;
 
     def predict(self, x_velocity, y_velocity, std ):
         """Predict the position of the point in the next frame.
@@ -60,6 +61,50 @@ class ParticleFilter:
         #previous position and we add the estimated speed and Gaussian noise
         self.particles[:, 0] += x_velocity + (np.random.randn(len(self.particles)) * std) #predict the X coord
         self.particles[:, 1] += y_velocity + (np.random.randn(len(self.particles)) * std) #predict the Y coord
+
+
+    def update_normal(self, x, y):
+        position = np.empty((len(self.particles), 2))
+        position[:, 0].fill(x)
+        position[:, 1].fill(y)
+        variance = np.square(self.std_)
+
+        distance = np.linalg.norm(self.particles - position, axis=1)
+        # vari_dist=np.power(np.var(distance),0.5)
+        vari_dist=np.var(distance)
+        print vari_dist
+         # for i, weight in enumerate(self.weights):
+        # pzx = np.exp(-np.square(self.particles[:,0]-x)/2*variance)/(np.sqrt(2*np.pi*variance))
+        # pzy = np.exp(-np.square(self.particles[:,1]-y)/2*variance)/(np.sqrt(2*np.pi*variance))
+        # pzxy=pzx*pzy
+        # print pzxy
+
+        pzx = np.exp(-np.square(distance)/2*vari_dist)/(np.sqrt(2*np.pi*vari_dist))
+        count=0
+        for i in range(len(pzx)):
+            if pzx[i]>0.001:
+                print pzx[i]
+                count=count+1
+            
+        print "count", count
+
+        # count =0
+        # for i in range(len(self.particles)):
+            # pzx = np.exp(-np.square(self.particles[i,0]-x)/2*variance)/(np.sqrt(2*np.pi*variance))
+            # pzy = np.exp(-np.square(self.particles[i,1]-y)/2*variance)/(np.sqrt(2*np.pi*variance))
+            # pzxy=pzx*pzy
+            # if pzxy>0.0:
+                # print pzxy
+                # count = count+1
+            
+        # print "count", count
+
+
+            
+        # self.weights = self.weights*
+
+        # self.weights
+
 
     def update(self, x, y):
         """Update the weights associated which each particle based on the (x,y) coords measured.
@@ -94,6 +139,10 @@ class ParticleFilter:
         self.weights += 1.e-300 #avoid zeros
         self.weights /= sum(self.weights) #normalize
 
+        entropy = self.get_entropy()
+        
+        return entropy
+
     def estimate(self):
         """Estimate the position of the point given the particle weights.
  
@@ -112,6 +161,15 @@ class ParticleFilter:
         #x_var = int(var[0])
         #y_var = int(var[1])
         return x_mean, y_mean, 0, 0
+
+    def get_entropy(self):
+        self.entropy=0
+        # for each in self.weights:
+            # self.entropy=self.entropy-each*np.log2(each);
+        self.entropy =-np.sum(self.weights*np.log2(self.weights))
+        return self.entropy
+
+
 
     def resample(self, method='residual'):
         """Resample the particle based on their weights.
@@ -236,7 +294,22 @@ class ParticleFilter:
         @param radius is the radius of the particles
         @return the frame with particles
         """
-        for x_particle, y_particle in self.particles.astype(int):
-            cv2.circle(frame, (x_particle, y_particle), radius, color, -1) #RED: Particles
+        # for x_particle, y_particle in self.particles.astype(int):
+            # cv2.circle(frame, (x_particle, y_particle), radius, color, -1) #RED: Particles
+        
+        #test code
+        for index in range(len(self.particles)):
+            each_radius = self.weights[index]*1000.0
+            if each_radius>5.0:
+                each_raius=5
+            elif each_radius<1.1:
+                each_raius=1
 
+            else:
+                each_radius = int(each_radius)
+
+            # print each_radius
+            # print "x", self.particles[index,0].astype(int)
+            # print "y", self.particles[index,1].astype(int)
+            cv2.circle(frame, (int(self.particles[index,0]), int(self.particles[index,1])), 2*int(each_radius), color, -1) #RED: Particles
 
