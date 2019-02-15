@@ -125,6 +125,52 @@ class ParticleFilter:
         entropy = self.get_entropy()
         return entropy
 
+    def update_fake(self, sub_particles, x, y):
+        """Update the weights associated which each particle based on the (x,y,z) coords measured.
+        Particles that closely match the measurements give an higher contribution.
+ 
+        The position of the point at the next time step is predicted using the 
+        estimated speed along X and Y axis and adding Gaussian noise sampled 
+        from a distribution with MEAN=0.0 and STD=std. It is a linear model.
+        @param x the position of the point in the X axis
+        @param y the position of the point in the Y axis
+        @param 
+        """
+        #Generating a temporary array for the input position
+        # position = np.empty((len(self.particles), 3))
+        if len(sub_particles)<50:
+            print "not enough particles to evaluate"
+
+        N_subparticles=len(sub_particles)
+        position = np.empty((len(sub_particles), 2))
+        position[:, 0].fill(x)
+        position[:, 1].fill(y)
+        # position[:, 2].fill(z)
+        #1- We can take the difference between each particle new
+        #position and the measurement. In this case is the Euclidean Distance.
+        distance = np.linalg.norm(sub_particles- position, axis=1)
+        #2- Particles which are closer to the real position have smaller
+        #Euclidean Distance, here we subtract the maximum distance in order
+        #to get the opposite (particles close to the real position have
+        #an higher wieght)
+        max_distance = np.amax(distance)
+        distance = np.add(-distance, max_distance)
+        #3-Particles that best predict the measurement 
+        #end up with the highest weight.
+        fake_weights = np.empty((N_subparticles, 1))
+        fake_weights.fill(1.0) #reset the weight array
+        fake_weights *= distance
+        #4- after the multiplication the sum of the fake_weights won't be 1. 
+        #Renormalize by dividing all the fake_weights by the sum of all the fake_weights.
+        fake_weights += 1.e-300 #avoid zeros
+        fake_weights /= sum(fake_weights) #normalize
+        # print "----------predit-----------" 
+        # print  self.fake_weights
+        # entropy = self.get_entropy()
+        return fake_weights
+
+
+
     def get_entropy_sample(self, x, y):
         """Update the weights associated which each particle based on the (x,y,z) coords measured.
         Particles that closely match the measurements give an higher contribution.

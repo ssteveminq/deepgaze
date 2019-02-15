@@ -330,6 +330,7 @@ get_entropy	build/lib.linux-x86_64-2.7/deepgaze/motion_tracking.py	/^    def get
 get_entropy	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def get_entropy(self):$/;"	m	class:ParticleFilter
 get_entropy	deepgaze/motion_tracking.py	/^    def get_entropy(self):$/;"	m	class:ParticleFilter
 get_entropy	deepgaze/object3d_tracking.py	/^    def get_entropy(self):$/;"	m	class:ParticleFilter
+get_entropy_sample	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def get_entropy_sample(self, x, y):$/;"	m	class:ParticleFilter
 get_entropy_sample	deepgaze/object3d_tracking.py	/^    def get_entropy_sample(self, x, y):$/;"	m	class:ParticleFilter
 global_step	examples/ex_dnn_head_pose_estimation_training/ex_dnn_head_pose_estimation_training.py	/^    global_step = tf.Variable(0)  # count the number of steps taken.$/;"	v
 graph	examples/ex_dnn_head_pose_estimation_training/ex_dnn_head_pose_estimation_testing.py	/^graph = tf.Graph()$/;"	v
@@ -681,6 +682,7 @@ update	build/lib.linux-x86_64-2.7/deepgaze/object3d_tracking.py	/^    def update
 update	deepgaze/bayes_filter.py	/^    def update(self, belief_predicted, measure, cpt_measure_accuracy):$/;"	m	class:DiscreteBayesFilter
 update	deepgaze/motion_tracking.py	/^    def update(self, x, y):$/;"	m	class:ParticleFilter
 update	deepgaze/object3d_tracking.py	/^    def update(self, x, y):$/;"	m	class:ParticleFilter
+update_fake	deepgaze/object3d_tracking.py	/^    def update_fake(self, sub_particles, x, y):$/;"	m	class:ParticleFilter
 update_normal	build/lib.linux-x86_64-2.7/deepgaze/motion_tracking.py	/^    def update_normal(self, x, y):$/;"	m	class:ParticleFilter
 update_normal	deepgaze/motion_tracking.py	/^    def update_normal(self, x, y):$/;"	m	class:ParticleFilter
 url	setup.py	/^  url='https:\/\/github.com\/mpatacchiola\/deepgaze',$/;"	v
