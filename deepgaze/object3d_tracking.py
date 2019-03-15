@@ -93,7 +93,7 @@ class ParticleFilter3D:
         # print "predict context"
         # self.particles[:, 2] += z_velocity + (np.random.randn(len(self.particles)) * std) #predict the Y coord
 
-    def predict_pointset(self,alpha, pointset,std ):
+    def predict_pointset(self, pointset,std ):
         """Predict the position of the point in the next frame from context information.
         Move the particles based on how the real system is predicted to behave.
         """
