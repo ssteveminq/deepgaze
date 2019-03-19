@@ -94,6 +94,33 @@ class ParticleFilter3D:
             
         # print "predict context"
         # self.particles[:, 2] += z_velocity + (np.random.randn(len(self.particles)) * std) #predict the Y coord
+    def predict_point(self,point,std ):
+        """Predict the position of the point in the next frame from context information.
+        Move the particles based on how the real system is predicted to behave.
+        """
+        self.particles[:, 0] = point.x + (np.random.randn(len(self.particles)) * std) #predict the X coord
+        self.particles[:, 1] = point.y + (np.random.randn(len(self.particles)) * std) #predict the Y coord
+            
+        # print "predict context"
+        # self.particles[:, 2] += z_velocity + (np.random.randn(len(self.particles)) * std) #predict the Y coord
+
+    def predict_pointset(self, pointset,std ):
+        """Predict the position of the point in the next frame from context information.
+        Move the particles based on how the real system is predicted to behave.
+        """
+        num_particles = len(self.particles)
+        half_num_particles = int(0.5*num_particles)
+        for id in range(half_num_particles):
+            self.particles[id, 0] = pointset[0].x + uniform(-0.2,0.2)
+            self.particles[id, 1] = pointset[0].y + uniform(-0.2,0.2)
+            half_id = id + half_num_particles 
+            self.particles[half_id, 0] = pointset[1].x + uniform(-0.2,0.2)
+            self.particles[half_id, 1] = pointset[1].y + uniform(-0.2,0.2)
+            
+        # print "predict context"
+        # self.particles[:, 2] += z_velocity + (np.random.randn(len(self.particles)) * std) #predict the Y coord
+
+
 
 
     # def update(self, x, y,z):
