@@ -239,9 +239,9 @@ def tangent_point_circle_extpoint(center, radius, ext_point):
     external point :ext_point
     get tangent point on the circle 
     '''
-    print center
-    print ext_point
-    print radius
+    # print center
+    # print ext_point
+    # print radius
     a = center.x
     b = center.y
     xp = ext_point.x
@@ -256,7 +256,7 @@ def tangent_point_circle_extpoint(center, radius, ext_point):
 
     pointset=[]
     #left first
-    if x2<x1:
+    if y2>y1:
         pointset.append(Point(x1,y1,0))
         pointset.append(Point(x2,y2,0))
     else:
