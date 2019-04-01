@@ -48,9 +48,11 @@ class ParticleFilter3D:
         #self.weights = np.empty((N, 1))
         self.weights = np.array([1.0/N]*N)
         #self.weights.fill(1.0/N) #normalised values
-        self.context_x=-3
-        self.context_y=0
+        self.context_x=-1.2
+        self.context_y=-1
 
+        self.context_x2=1.7
+        self.context_y2=-1
     # def predict(self, x_velocity, y_velocity, z_velocity, std ):
     def predict(self, x_velocity, y_velocity, std ):
         """Predict the position of the point in the next frame.
@@ -75,8 +77,17 @@ class ParticleFilter3D:
         """
         # print context_category
         if context_category==1:
-            self.particles[:, 0] = self.context_x + (np.random.randn(len(self.particles)) * std) #predict the X coord
-            self.particles[:, 1] = self.context_y + (np.random.randn(len(self.particles)) * std) #predict the Y coord
+            for i in range(len(self.particles)):
+                if i<0.5*len(self.particles):
+                    # self.particles[i, 0] = self.context_x + (np.random.randn(len(self.particles)) * std) #predict the X coord
+                    self.particles[i, 0] = self.context_x + 5*(np.random.uniform(-1.0, 1.0) * std) #predict the X coord
+                    self.particles[i, 1] = self.context_y + 5*(np.random.uniform(-1.0, 1.0) * std) #predict the Y coord
+                    # self.particles[i, 0] = self.context_x + (np.random.randn(len(self.particles)) * std) #predict the X coord
+                    # self.particles[i, 1] = self.context_y + (np.random.randn(len(self.particles)) * std) #predict the Y coord
+                    # self.particles[i, 1] = self.context_y + (np.random.randn(len(self.particles)) * std) #predict the Y coord
+                else:
+                    self.particles[i, 0] = self.context_x2 + 5*(np.random.uniform(-1.0, 1.0) * std) #predict the X coord
+                    self.particles[i, 1] = self.context_y2 + 5*(np.random.uniform(-1.0, 1.0) * std) #predict the Y coord
         else:
             self.particles[:, 0] = -self.context_x + (np.random.randn(len(self.particles)) * std) #predict the X coord
             self.particles[:, 1] = -self.context_y + (np.random.randn(len(self.particles)) * std) #predict the Y coord
