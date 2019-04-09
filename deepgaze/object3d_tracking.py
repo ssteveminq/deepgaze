@@ -178,6 +178,7 @@ class ParticleFilter3D:
         # position = np.empty((len(self.particles), 3))
         if len(sub_particles)<50:
             print "not enough particles to evaluate"
+            return
 
         N_subparticles=len(sub_particles)
         position = np.empty((len(sub_particles), 2))
