@@ -251,22 +251,31 @@ def tangent_point_circle_extpoint(center, radius, ext_point):
     yp = ext_point.y
     r = radius
     
-    x1 = (math.pow(r,2)*(xp-a)+r*(yp-b)*math.sqrt(math.pow((xp-a),2)+math.pow((yp-b),2)-math.pow(r,2)))/(math.pow(xp-a,2)+math.pow(yp-b,2))+a
-    x2 = (math.pow(r,2)*(xp-a)-r*(yp-b)*math.sqrt(math.pow((xp-a),2)+math.pow((yp-b),2)-math.pow(r,2)))/(math.pow(xp-a,2)+math.pow(yp-b,2))+a
+    isValid=False
+    
+    if (math.pow((xp-a),2)+math.pow((yp-b),2)-math.pow(r,2))>0:
+        x1 = (math.pow(r,2)*(xp-a)+r*(yp-b)*math.sqrt(math.pow((xp-a),2)+math.pow((yp-b),2)-math.pow(r,2)))/(math.pow(xp-a,2)+math.pow(yp-b,2))+a
+        x2 = (math.pow(r,2)*(xp-a)-r*(yp-b)*math.sqrt(math.pow((xp-a),2)+math.pow((yp-b),2)-math.pow(r,2)))/(math.pow(xp-a,2)+math.pow(yp-b,2))+a
 
-    y1 = (math.pow(r,2)*(yp-b)-r*(xp-a)*math.sqrt(math.pow((xp-a),2)+math.pow((yp-b),2)-math.pow(r,2)))/(math.pow(xp-a,2)+math.pow(yp-b,2))+b
-    y2 = (math.pow(r,2)*(yp-b)+r*(xp-a)*math.sqrt(math.pow((xp-a),2)+math.pow((yp-b),2)-math.pow(r,2)))/(math.pow(xp-a,2)+math.pow(yp-b,2))+b
+        y1 = (math.pow(r,2)*(yp-b)-r*(xp-a)*math.sqrt(math.pow((xp-a),2)+math.pow((yp-b),2)-math.pow(r,2)))/(math.pow(xp-a,2)+math.pow(yp-b,2))+b
+        y2 = (math.pow(r,2)*(yp-b)+r*(xp-a)*math.sqrt(math.pow((xp-a),2)+math.pow((yp-b),2)-math.pow(r,2)))/(math.pow(xp-a,2)+math.pow(yp-b,2))+b
 
-    pointset=[]
-    #left first
-    if y2>y1:
-        pointset.append(Point(x1,y1,0))
-        pointset.append(Point(x2,y2,0))
+        pointset=[]
+        #left first
+        if y2>y1:
+            pointset.append(Point(x1,y1,0))
+            pointset.append(Point(x2,y2,0))
+        else:
+            pointset.append(Point(x2,y2,0))
+            pointset.append(Point(x1,y1,0))
+
+        return pointset
     else:
-        pointset.append(Point(x2,y2,0))
-        pointset.append(Point(x1,y1,0))
+        pointset=[]
+        pointset.append(Point(a, b+radius,0))
+        pointset.append(Point(a, b-radius,0))
+        return pointset
 
-    return pointset
     # print x1,y1
     # print x2,y2
 
